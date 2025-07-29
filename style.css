@@ -1,0 +1,570 @@
+/* Importação de fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+/* Variáveis CSS para cores e fontes */
+:root {
+    --primary-color: #4CAF50; /* Verde */
+    --secondary-color: #388E3C; /* Verde mais escuro */
+    --accent-color: #FFC107; /* Amarelo */
+    --text-color: #333;
+    --light-text-color: #555;
+    --background-light: #f4f4f4;
+    --white: #fff;
+    --dark-grey: #222;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Reset básico e estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0px ;
+}
+
+.bg-light {
+    background-color: var(--background-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-bottom: 20px;
+    color: var(--dark-grey);
+}
+
+h1 {
+    font-size: 3.5em;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Header */
+header {
+    background-color: var(--dark-grey);
+    color: var(--white);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 30px;
+}
+
+.nav-menu a {
+    color: var(--white);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* Menu Toggle (Mobile) */
+.menu-toggle {
+    display: none; /* Escondido em desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--white);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('https://via.placeholder.com/1500x800/4CAF50/FFFFFF?text=Fundo+da+Igreja') no-repeat center center/cover;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Overlay escuro para contraste */
+}
+
+.hero-content {
+    position: relative; /* Para ficar acima do overlay */
+    z-index: 1;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    margin-bottom: 20px;
+    font-size: 3.8em;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.4em;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+/* About Section */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center; 
+}
+
+/* Cultos and Eventos Grids */
+.cultos-grid,
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.culto-item,
+.evento-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.evento-item img {
+    background-position: center;
+    background-size: cover;
+}
+
+.culto-item:hover,
+.evento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.culto-item h3,
+.evento-item h3 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.culto-item p,
+.evento-item p {
+    color: var(--light-text-color);
+    font-size: 1.1em;
+}
+
+.culto-item p strong,
+.evento-item p strong {
+    color: var(--text-color);
+}
+
+/* ... outros estilos ... */
+
+
+/* Contact Section */
+.contact-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Reduzi o gap */
+    max-width: 1100px; /* Aumentei um pouco a largura máxima para acomodar o mapa */
+    margin: 0 auto;
+    align-items: flex-start; /* Alinhar os itens no topo */
+}
+
+
+.contact-info,
+.contact-map {
+    flex: 1;
+    min-width: 300px;
+}
+
+
+.contact-map iframe {
+    width: 100%; /* Garante que o iframe se ajuste à largura do contêiner */
+    height: 400px; /* Altura padrão do mapa */
+    border-radius: 8px; /* Opcional: bordas arredondadas no mapa */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Opcional: sombra no mapa */
+}
+
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+
+.social-media {
+    margin-top: 20px;
+}
+
+
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.3em;
+    color: var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-decoration: none; /* Remover sublinhado dos ícones */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.social-media a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+
+/* Estilos específicos para os ícones do Font Awesome (se necessário) */
+.fab, .fas { /* Adiciona um pouco de margem interna para melhor aparência */
+    padding: 8px;
+}
+
+
+/* ... media queries ... */
+
+
+/* Para tablets e telas menores que 992px */
+@media (max-width: 992px) {
+    /* ... outros estilos ... */
+
+
+    .contact-flex {
+        flex-direction: column; /* Empilha as informações e o mapa */
+        align-items: center;
+    }
+
+
+    .contact-info,
+    .contact-map {
+        width: 100%;
+        max-width: 600px;
+    }
+
+
+    .contact-map iframe {
+        height: 350px; /* Altura ajustada para telas menores */
+    }
+}
+
+
+/* Para celulares e telas menores que 768px */
+@media (max-width: 768px) {
+    /* ... outros estilos ... */
+
+
+    .contact-map iframe {
+        height: 300px; /* Altura ainda menor para celulares */
+    }
+}
+
+
+/* Para celulares muito pequenos e telas menores que 480px */
+@media (max-width: 480px) {
+    /* ... outros estilos ... */
+
+
+    .contact-map iframe {
+        height: 250px;
+    }
+
+
+    .social-media a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1em;
+    }
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: var(--font-body);
+}
+
+.contact-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.contact-form .btn {
+    align-self: flex-start; /* Alinha o botão à esquerda */
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-grey);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+/* --------------------
+   Responsividade (Media Queries)
+   -------------------- */
+
+/* Para tablets e telas menores que 992px */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.2em;
+    }
+
+    .nav-menu li {
+        margin-left: 20px;
+    }
+
+    .cultos-grid,
+    .eventos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .contact-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info,
+    .contact-form {
+        width: 100%;
+        max-width: 500px; /* Limita a largura em telas menores */
+    }
+}
+
+/* Para celulares e telas menores que 768px */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 50px 0;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .hero-section {
+        height: 450px;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    /* Navegação em Mobile */
+    header .container {
+        flex-wrap: wrap; /* Permite que o logo e menu quebrem linha */
+        justify-content: center;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        display: none; /* Esconde o menu por padrão */
+        text-align: center;
+        margin-top: 15px;
+        background-color: var(--dark-grey); /* Fundo para o menu */
+    }
+
+    .nav-menu.active {
+        display: flex; /* Mostra o menu quando ativo */
+    }
+
+    .nav-menu li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 15px 0;
+    }
+
+    .menu-toggle {
+        display: flex; /* Mostra o botão do menu */
+        position: absolute; /* Posiciona no canto superior direito */
+        right: 20px;
+        top: 25px;
+    }
+
+    .cultos-grid,
+    .eventos-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
+    }
+}
+
+/* Para celulares muito pequenos e telas menores que 480px */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+}
