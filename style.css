@@ -269,6 +269,10 @@ header .container {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.evento-item {
+    background-color: #010101;
+}
+
 .evento-item img {
     background-position: center;
     background-size: cover;
